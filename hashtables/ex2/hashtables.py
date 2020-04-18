@@ -28,7 +28,7 @@ def hash(string, max):
 
 def hash_table_insert(hash_table, key, value):
     index = hash(key, len(hash_table.storage))
-
+    print(index)
     current_pair = hash_table.storage[index]
     last_pair = None
 
@@ -89,3 +89,11 @@ def hash_table_resize(hash_table):
             current_pair = current_pair.next
 
     return new_hash_table
+
+
+
+# e= HashTable('one','two')
+
+one = HashTable(3)
+hash_table_insert(one,'NONE','two')
+hash_table_insert(one,'two','three')
