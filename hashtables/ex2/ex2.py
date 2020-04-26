@@ -12,31 +12,17 @@ class Ticket:
         self.destination = destination
 
 
-def reconstruct_trip(tickets, length):
+def reconstruct_trip(tickets, length ):
     hashtable = HashTable(length)
-    route = [None] * length
+    route = [None] * (length -1)
+    # for x in range((length -1  ),-1,-1):
+    #     hash_table_insert(hashtable,tickets[x].source,tickets[x].destination)
 
-    """
-    YOUR CODE HERE
-    """
-    if t in tickets:
-        print(t.source,t.destination)
-        hash_table_insert(hashtable,t.source,t.destination)
+    for t in tickets: # for our every index in tickets 
+        hash_table_insert(hashtable, t.source, t.destination) # we will get the hash length, the source of the index, and the destination of the index and insert it into our hash
 
-        print(route,hashtable)
-        route[t] = 
-    return 
-    # return route
-    # hash_table_insert(tickets)
-    # print(tickets,length)
-    # return tickets , length
-    # pass
+    route[0] = hash_table_retrieve(hashtable, "NONE") # initially hashing at the first index with "None" being our initial key
+    for i in range(1, length - 1):
+        route[i] = hash_table_retrieve(hashtable, route[i-1])
 
-
-# one = Ticket(4)
-ticket_1 = Ticket("NONE", "PDX")
-ticket_2 = Ticket("PDX", "DCA")
-ticket_3 = Ticket("DCA", "NONE")
-tickets = [ticket_1, ticket_2, ticket_3]
-re = reconstruct_trip( tickets,3)
-print(re)
+    return route
